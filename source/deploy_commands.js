@@ -17,6 +17,7 @@ for (const folder of commandFolders) {
         const filePath = path.join(commandsPath, file);
         const command = require(filePath);
         if ('data' in command && 'execute' in command) {
+            console.log(command.data.name + ": " + command.data.description);
             commands.push(command.data.toJSON());
         } else {
             console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
@@ -31,9 +32,10 @@ const rest = new REST().setToken(token);
 (async () => {
     try {
         console.log(`Started refreshing ${commands.length} application (/) commands.`);
+
         // The put method is used to fully refresh all commands in the guild with the current set
         const data = await rest.put(
-            Routes.applicationCommands(clientId),
+            Routes.applicationCommands(clientId, guildId),
             { body: commands },
         );
 
