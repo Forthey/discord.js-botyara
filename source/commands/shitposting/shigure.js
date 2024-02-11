@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, MessageAttachment } = require('discord.js');
-const imageSrc = '../../images/shigure-ui-dance.gif';
+const imageSrc = 'images/shigure-ui-dance.gif';
 
 module.exports = {
     data: new SlashCommandBuilder()
