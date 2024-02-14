@@ -15,10 +15,9 @@ module.exports = {
         const user = await interaction.options.getUser('user');
         let url = user.avatarURL();
         url = url.substring(0, url.indexOf(".", url.length - 5)) + ".png";
-        console.log(url);
         let animatedGif = await getPetGif(url);
-        const patGif = new AttachmentBuilder(animatedGif);
+        const patGif = new AttachmentBuilder("pat.gif", animatedGif);
         //await interaction.reply({ files : [patGif] });
-        await interaction.reply({files: [{attachment: animatedGif}]});
+        await interaction.reply({files: [{attachment: animatedGif, name: 'pat.gif'}]});
     },
 }
