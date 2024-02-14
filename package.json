@@ -4,6 +4,6 @@
   "dependencies": {
     "discord.js": "^14.14.1",
     "jsdom": "^24.0.0",
-    "pet-pet-gif": "^1.0.9"
+    "pet-pet-gif": "^1.0.8"
   }
 }
