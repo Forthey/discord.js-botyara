@@ -1,19 +1,18 @@
 const { SlashCommandBuilder } = require('discord.js');
+const getPetGif = require("pet-pet-gif");
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('info')
-        .setDescription('Get info about a user or a server!')
-        .addSubcommand(subcommand =>
-            subcommand
+        .setName('pat')
+        .setDescription('Прояви свою безграничную любовь')
+        .addUserOption(option =>
+            option
                 .setName('user')
-                .setDescription('Info about a user')
-                .addUserOption(option => option.setName('target').setDescription('The user')))
-        .addSubcommand(subcommand =>
-            subcommand
-                .setName('server')
-                .setDescription('Info about the server')),
+                .setDescription('кому проявить свою безграничную любовь')
+                .setRequired(true)),
     async execute(interaction) {
-        await interaction.reply("Похуй чо ты написал там");
+        const user = interaction.options.getUser('user');
+        const animatedGif = await getPetGif(user.avatarURL());
+        await interaction.reply(animatedGif);
     },
 }
